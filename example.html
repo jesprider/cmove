@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=10'>
+    <meta name='viewport' content='width=device-width,initial-scale=1,user-scalable=no'>
+	<title>Lightweight javascript canvas plugin</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+            height: 300px;
+            margin: 0 auto;
+            }
+        .canvas {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Move your shapes!</h1>
+<div class="container">
+    <canvas id="canvas" class="canvas">
+    This text is displayed if your browser does not support HTML5 Canvas.
+    </canvas>
+</div>
+
+<script src="lib/hand-1.3.8.js"></script>
+<script src="lib/cmove.js"></script>
+<script>
+var canvas = document.getElementById('canvas'),
+    mc = new cMove.MyCanvas(canvas);
+cMove.config.RETINA_PICTURES = true;
+
+mc.addShape(new cMove.Rectangle(mc, {
+    x: 20,
+    y: 30,
+    w: 70,
+    h: 50,
+    fill: 'rgba(1,118,200,.7)'})
+);
+mc.addShape(new cMove.Rectangle(mc, {
+    x: 120,
+    y: 50,
+    w: 60,
+    h: 60,
+    fill: 'rgba(68,123,28,.7)',
+    draggable: false})
+);
+mc.addShape(new cMove.Picture(mc, {src: 'i/jewels/drop.png', x: 30, y: 120, selectable: false}));
+mc.addShape(new cMove.Picture(mc, {src: 'i/jewels/star.png', x: 120, y: 100}));
+
+</script>
+</body>
+</html>
